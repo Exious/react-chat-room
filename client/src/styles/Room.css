@@ -1,0 +1,18 @@
+.sidebar-wrapper {
+  height: 200px;
+  width: 600px;
+  background: moccasin;
+}
+
+.chat-wrapper {
+  height: 200px;
+  width: 600px;
+  background: mediumpurple;
+}
+.bottom-panel-wrapper {
+  height: 60px;
+}
+
+.history-wrapper {
+  height: calc(100% - 60px);
+}

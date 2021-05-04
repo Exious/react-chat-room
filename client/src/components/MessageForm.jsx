@@ -10,6 +10,7 @@ function MessageForm({ roomId, userName }) {
       const obj = {
         roomId,
         userName,
+        type: "message",
         text: message,
         timestamp: Date.now(),
       };

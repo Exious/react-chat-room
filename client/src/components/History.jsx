@@ -2,6 +2,8 @@ import React from "react";
 
 import socket from "../socket";
 
+import "../styles/History.css";
+
 function History({ roomId, messages, dispatch }) {
   const messagesRef = React.useRef(null);
 
@@ -34,6 +36,10 @@ function History({ roomId, messages, dispatch }) {
     });
   }, [dispatch]);
 
+  React.useEffect(() => {
+    messagesRef.current.scrollTo(0, messages.length * 100);
+  }, [messages]);
+
   return (
     <div className="history-wrapper">
       <div ref={messagesRef} className="messages">
@@ -41,6 +47,7 @@ function History({ roomId, messages, dispatch }) {
           <div className="message" key={message.timestamp}>
             <p>{message.text}</p>
             <div>
+              <span>{message.type}</span>
               <span>{message.userName}</span>
               <span>{getTime(message)}</span>
             </div>

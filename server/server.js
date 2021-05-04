@@ -56,7 +56,15 @@ function onConnection(socket) {
       userName: user.name,
       roomId: user.currentlyChat,
     };
+    const message = {
+      userName: user.name,
+      userId: user.id,
+      type: "system",
+      text: `${user.name} joined`,
+      timestamp: Date.now(),
+    };
     socket.emit("ROOM:USER-DATA", obj);
+    io.emit("ROOM:RECIEVE-MESSAGE", message);
   });
 
   socket.on("ROOM:FIND-USERS", () => {
@@ -66,16 +74,25 @@ function onConnection(socket) {
     io.to(user.currentlyChat).emit("ROOM:GET-USERS", users);
   });
 
-  socket.on("ROOM:NEW-MESSAGE", ({ roomId, userName, text, timestamp }) => {
-    const obj = {
-      userName,
-      userId: user.id,
-      text,
-      timestamp,
-    };
-    roomsList.rooms.get(roomId).get("messages").push(obj);
-    io.to(user.currentlyChat).emit("ROOM:RECIEVE-MESSAGE", obj);
-  });
+  socket.on(
+    "ROOM:NEW-MESSAGE",
+    ({ roomId, userName, type, text, timestamp }) => {
+      const obj = {
+        userName,
+        userId: user.id,
+        type,
+        text,
+        timestamp,
+      };
+      console.log(obj);
+      roomsList.rooms.get(roomId).get("messages").push(obj);
+      socket.emit("ROOM:RECIEVE-MESSAGE", { ...obj, type: "my" });
+      socket.broadcast.to(user.currentlyChat).emit("ROOM:RECIEVE-MESSAGE", {
+        ...obj,
+        type: "others",
+      });
+    }
+  );
 
   socket.on("ROOM:GET-MESSAGE-HISTORY", (roomId) => {
     socket.emit(
@@ -92,6 +109,14 @@ function onConnection(socket) {
       const users = [
         ...roomsList.rooms.get(user.currentlyChat).get("users").values(),
       ];
+      const message = {
+        userName: user.name,
+        userId: user.id,
+        type: "system",
+        text: `${user.name} disconnected`,
+        timestamp: Date.now(),
+      };
+      io.emit("ROOM:RECIEVE-MESSAGE", message);
       socket.broadcast.to(user.currentlyChat).emit("ROOM:GET-USERS", users);
     }
   });

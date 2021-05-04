@@ -25,7 +25,7 @@ function App() {
         )}
       </Route>
       <Route path="/room/:id" exact>
-        <Room setRoomId={setRoomId} />
+        <Room setRoomId={setRoomId} isLogged={isLogged} />
       </Route>
       <Route path="/login" exact>
         <Login setIsLogged={setIsLogged} />

@@ -11,7 +11,7 @@ import Loading from "./Loading";
 
 import "../styles/Room.css";
 
-function Room({ setRoomId }) {
+function Room({ setRoomId, isLogged }) {
   const { id } = useParams();
 
   const [state, dispatch] = React.useReducer(reducer, {
@@ -23,16 +23,19 @@ function Room({ setRoomId }) {
   });
 
   React.useEffect(() => {
-    setRoomId(state.roomId);
-    socket.emit("ROOM:ID-CHECK", state.roomId);
-    socket.emit("ROOM:USER-JOINED", state.roomId);
-    socket.on("ROOM:USER-DATA", (obj) => {
-      dispatch({
-        type: "JOINED",
-        payload: obj,
+    if (isLogged) {
+      socket.emit("ROOM:ID-CHECK", state.roomId);
+      socket.emit("ROOM:USER-JOINED", state.roomId);
+      socket.on("ROOM:USER-DATA", (obj) => {
+        dispatch({
+          type: "JOINED",
+          payload: obj,
+        });
       });
-    });
-  }, [state.roomId, setRoomId]);
+    } else {
+      setRoomId(state.roomId);
+    }
+  }, [state.roomId, setRoomId, isLogged]);
 
   return (
     <div>

@@ -8,11 +8,16 @@ import MessageForm from "./MessageForm";
 import History from "./History";
 import Side from "./Side";
 import Loading from "./Loading";
+import ChatHeader from "./ChatHeader";
 
 import "../styles/Room.css";
 
-function Room({ setRoomId, isLogged }) {
+import { useAuth } from "./AuthContext";
+
+function Room() {
   const { id } = useParams();
+
+  const { isLogged, setRoomId } = useAuth();
 
   const [state, dispatch] = React.useReducer(reducer, {
     joined: false,
@@ -37,20 +42,20 @@ function Room({ setRoomId, isLogged }) {
     }
   }, [state.roomId, setRoomId, isLogged]);
 
-  return (
-    <div>
-      {state.joined ? (
-        <div>
-          <div className="chat-wrapper">
-            <History {...state} dispatch={dispatch} />
-            <MessageForm {...state} />
-          </div>
-          <Side {...state} dispatch={dispatch} />
+  return state.joined ? (
+    <div className="room">
+      <ChatHeader {...state} />
+      <div className="separator horizontal shheader"></div>
+      <div className="room-content">
+        <div className="chat">
+          <History {...state} dispatch={dispatch} />
+          <MessageForm {...state} />
         </div>
-      ) : (
-        <Loading />
-      )}
+        <Side {...state} dispatch={dispatch} />
+      </div>
     </div>
+  ) : (
+    <Loading />
   );
 }
 

@@ -31,7 +31,7 @@ const roomsList = new Rooms();
 
 function onConnection(socket) {
   const user = new User(socket);
-  socket.on("CREATED:USER", ({ name, timestamp }) => {
+  socket.on("USER:CREATED", ({ name, timestamp }) => {
     user.name = name;
     user.timestamp = timestamp;
   });
@@ -63,8 +63,11 @@ function onConnection(socket) {
       text: `${user.name} joined`,
       timestamp: Date.now(),
     };
+    roomsList.rooms.get(user.currentlyChat).get("messages").push(message);
     socket.emit("ROOM:USER-DATA", obj);
-    io.emit("ROOM:RECIEVE-MESSAGE", message);
+    socket.broadcast
+      .to(user.currentlyChat)
+      .emit("ROOM:RECIEVE-MESSAGE", message);
   });
 
   socket.on("ROOM:FIND-USERS", () => {
@@ -84,12 +87,17 @@ function onConnection(socket) {
         text,
         timestamp,
       };
-      console.log(obj);
-      roomsList.rooms.get(roomId).get("messages").push(obj);
-      socket.emit("ROOM:RECIEVE-MESSAGE", { ...obj, type: "my" });
+      roomsList.rooms
+        .get(roomId)
+        .get("messages")
+        .push({
+          ...obj,
+          affiliation: "others",
+        });
+      socket.emit("ROOM:RECIEVE-MESSAGE", { ...obj, affiliation: "my" });
       socket.broadcast.to(user.currentlyChat).emit("ROOM:RECIEVE-MESSAGE", {
         ...obj,
-        type: "others",
+        affiliation: "others",
       });
     }
   );
@@ -116,7 +124,8 @@ function onConnection(socket) {
         text: `${user.name} disconnected`,
         timestamp: Date.now(),
       };
-      io.emit("ROOM:RECIEVE-MESSAGE", message);
+      io.to(user.currentlyChat).emit("ROOM:RECIEVE-MESSAGE", message);
+      roomsList.rooms.get(user.currentlyChat).get("messages").push(message);
       socket.broadcast.to(user.currentlyChat).emit("ROOM:GET-USERS", users);
     }
   });

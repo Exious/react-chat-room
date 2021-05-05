@@ -2,19 +2,12 @@ import React from "react";
 
 import socket from "../socket";
 
+import renderedMessage from "../messageRenderer";
+
 import "../styles/History.css";
 
 function History({ roomId, messages, dispatch }) {
   const messagesRef = React.useRef(null);
-
-  const prettifyTime = (str) => (str < 10 ? `0${str}` : str);
-
-  const getTime = (message) => {
-    const date = new Date(message.timestamp);
-    return `${prettifyTime(date.getHours())}:${prettifyTime(
-      date.getMinutes()
-    )}`;
-  };
 
   React.useEffect(() => {
     socket.emit("ROOM:GET-MESSAGE-HISTORY", roomId);
@@ -41,19 +34,8 @@ function History({ roomId, messages, dispatch }) {
   }, [messages]);
 
   return (
-    <div className="history-wrapper">
-      <div ref={messagesRef} className="messages">
-        {messages.map((message) => (
-          <div className="message" key={message.timestamp}>
-            <p>{message.text}</p>
-            <div>
-              <span>{message.type}</span>
-              <span>{message.userName}</span>
-              <span>{getTime(message)}</span>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div ref={messagesRef} className="history-wrapper">
+      {messages.map(renderedMessage)}
     </div>
   );
 }

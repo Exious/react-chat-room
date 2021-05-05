@@ -4,8 +4,14 @@ import socket from "../socket";
 
 import { useHistory } from "react-router-dom";
 
-function Login({ setIsLogged }) {
+import { useAuth } from "./AuthContext";
+
+import "../styles/Login.css";
+
+function Login() {
   const [userName, setUserName] = React.useState("");
+
+  const { setIsLogged } = useAuth();
 
   const history = useHistory();
 
@@ -19,7 +25,7 @@ function Login({ setIsLogged }) {
       timestamp: Date.now(),
     };
 
-    socket.emit("CREATED:USER", obj);
+    socket.emit("USER:CREATED", obj);
 
     setIsLogged(true);
 
@@ -27,18 +33,22 @@ function Login({ setIsLogged }) {
   };
 
   return (
-    <div className="login-block">
-      <input
-        type="text"
-        placeholder="Ваше имя"
-        value={userName}
-        onChange={(e) => setUserName(e.target.value)}
-      />
-      <button onClick={onEnter} className="btn btn-success">
-        ВОЙТИ
-      </button>
+    <div className="login-wrapper">
+      <div className="login">
+        <input
+          className="login__input"
+          type="text"
+          placeholder="Your nickname"
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
+        />
+        <button className="login__button" onClick={onEnter}>
+          Enter
+        </button>
+      </div>
     </div>
   );
 }
 
 export default Login;
+

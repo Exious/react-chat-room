@@ -1,18 +1,89 @@
-.sidebar-wrapper {
-  height: 200px;
-  width: 600px;
-  background: moccasin;
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  border: none;
+  list-style-type: none;
+  font-family: "Raleway", sans-serif;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 1.5rem;
+  text-align: center;
 }
 
-.chat-wrapper {
-  height: 200px;
-  width: 600px;
-  background: mediumpurple;
-}
-.bottom-panel-wrapper {
-  height: 60px;
+*:focus {
+  outline: none;
 }
 
-.history-wrapper {
-  height: calc(100% - 60px);
+:root {
+  font-size: 10px;
 }
+
+body {
+  width: 100%;
+  height: 100%;
+  background: #e2e5ec;
+}
+
+#root {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: 100vh;
+}
+
+.room {
+  width: 100rem;
+  height: 68rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 10rem auto;
+  background: #ffffff;
+  -webkit-box-shadow: 0px 90px 180px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 90px 180px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  -ms-flex-item-align: center;
+      align-self: center;
+  position: relative;
+}
+
+.room-content {
+  display: inherit;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.separator {
+  border: 0.1rem solid #eeeeee;
+}
+
+.horizontal {
+  height: 0rem;
+  width: 100%;
+}
+
+.chat {
+  width: 70%;
+  height: calc(100% - 8rem);
+  margin-top: 8rem;
+}
+
+.shheader {
+  margin-top: 8rem;
+  -webkit-transform: translateY(-100%);
+          transform: translateY(-100%);
+  z-index: 2;
+}
+/*# sourceMappingURL=Room.css.map */

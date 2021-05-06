@@ -1,0 +1,42 @@
+.room-header {
+  height: 8rem;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+.room-header_id {
+  height: 100%;
+  border-radius: 1rem;
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.room-header_id_blur {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  -webkit-filter: blur(0.1rem);
+          filter: blur(0.1rem);
+  z-index: 1;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+}
+
+.room-header_id_text {
+  display: inherit;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  font-size: 1.7rem;
+  line-height: 150%;
+  color: #2f3034;
+  z-index: 2;
+}
+/*# sourceMappingURL=ChatHeader.css.map */

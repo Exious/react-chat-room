@@ -1,0 +1,46 @@
+.users {
+  height: 40%;
+  padding: 1rem 0rem;
+  margin: 0rem 4rem;
+  display: flex;
+  flex-direction: column;
+
+  text-align: start;
+
+  &_name {
+    font-size: 2rem;
+    text-align: inherit;
+  }
+
+  &_list {
+    text-align: inherit;
+    margin-left: 2rem;
+    margin-top: 1rem;
+
+    height: 100%;
+    padding: 1rem;
+
+    background-color: #fff3f8;
+    overflow-x: scroll;
+
+    border-radius: 1rem;
+
+    &__item {
+      text-align: inherit;
+    }
+
+    &::-webkit-scrollbar {
+      width: 0.7rem;
+      height: 0.7rem;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: grey;
+      border-radius: 1rem;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: grey;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@import "index.scss";
+
+.room {
+  width: 100rem;
+  height: 68rem;
+  display: flex;
+  flex-direction: column;
+
+  margin: 10rem auto;
+
+  background: #ffffff;
+  box-shadow: 0px 90px 180px rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+
+  align-self: center;
+
+  position: relative;
+
+  &-content {
+    display: inherit;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.separator {
+  @include separator;
+}
+
+.horizontal {
+  height: 0rem;
+  width: 100%;
+}
+
+.chat {
+  width: 70%;
+  height: calc(100% - 8rem);
+
+  margin-top: 8rem;
+}
+
+.shheader {
+  margin-top: 8rem;
+  transform: translateY(-100%);
+  z-index: 2;
+}

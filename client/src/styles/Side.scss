@@ -1,0 +1,41 @@
+.verical {
+  height: 100%;
+  width: 0rem;
+}
+
+.sidebar {
+  margin-top: 8rem;
+
+  width: 30%;
+  height: calc(100% - 8rem);
+
+  display: flex;
+  position: relative;
+
+  &__content {
+    width: 100%;
+    height: 60rem;
+
+    display: flex;
+    flex-direction: column;
+
+    &_info {
+      height: 5rem;
+      justify-content: center;
+      font-size: 2.5rem;
+      font-weight: 400;
+
+      color: #ffffff;
+
+      align-items: center;
+      display: flex;
+
+      background-color: #5f2eea;
+      opacity: 0.995;
+    }
+
+    &_activities {
+      height: calc(100% - 5rem);
+    }
+  }
+}

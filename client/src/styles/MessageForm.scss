@@ -1,0 +1,61 @@
+@import "index.scss";
+
+.horizontal {
+  height: 0rem;
+  width: 100%;
+}
+
+.bottom-panel-wrapper {
+  height: 6rem;
+
+  position: relative;
+
+  background: #dbe5ff;
+
+  border-bottom-left-radius: 1rem;
+}
+
+.bottom-panel {
+  justify-content: space-between;
+  align-items: center;
+
+  margin: 1.2rem 0rem;
+
+  display: flex;
+
+  position: absolute;
+
+  width: 100%;
+  height: 3.6rem;
+
+  &__input {
+    width: 70%;
+    height: 100%;
+
+    text-align: left;
+    padding-left: 2rem;
+    margin-left: 4rem;
+    border: 0.05rem solid black;
+    border-radius: 2rem;
+  }
+
+  &__button {
+    width: 15%;
+    height: 100%;
+    border-radius: 1rem;
+
+    margin-right: 4rem;
+
+    background: #4d7cfe;
+
+    color: ivory;
+
+    font-weight: 600;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.95;
+      transform: scale(1.05);
+    }
+  }
+}

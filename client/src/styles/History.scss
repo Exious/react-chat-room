@@ -1,0 +1,111 @@
+.history-wrapper {
+  height: calc(100% - 6rem);
+
+  overflow-y: scroll;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 0.7rem;
+    height: 2rem;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: grey;
+    border-radius: 1rem;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: grey;
+  }
+}
+
+.message {
+  &__wrapper {
+    width: 100%;
+    padding: 0.5rem 0rem;
+  }
+
+  &_system {
+    width: fit-content;
+    height: 2rem;
+
+    border-radius: 5rem;
+
+    background-color: Orange;
+
+    margin: 0rem auto;
+
+    display: flex;
+    align-items: center;
+
+    &_text {
+      font-size: 1.3rem;
+
+      color: ivory;
+
+      font-weight: 400;
+
+      margin: 0rem 0.7rem;
+    }
+  }
+
+  &_my {
+    display: flex;
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  &_others {
+    display: flex;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  &_my,
+  &_others {
+    flex-direction: column;
+  }
+
+  &_my_color,
+  &_others_color {
+    width: fit-content;
+    max-width: 60%;
+    margin: 0rem 0.75rem;
+    text-align: inherit;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  &_my_color {
+    background-color: #dbe5ff;
+    color: #4d7cfe;
+    border-bottom-right-radius: 0rem;
+  }
+
+  &_others_color {
+    background-color: #4d7cfe;
+    color: #ffffff;
+    border-bottom-left-radius: 0rem;
+  }
+}
+
+.user-name {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.content {
+  position: relative;
+  display: flex;
+
+  &_text {
+    text-align: start;
+    font-size: 1.8rem;
+  }
+
+  &_time {
+    font-size: 1.2rem;
+    align-self: flex-end;
+    margin-left: 0.5rem;
+  }
+}

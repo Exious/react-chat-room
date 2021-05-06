@@ -1,0 +1,26 @@
+.online {
+  height: 5%;
+  background-color: #00ba88;
+  opacity: 0.95;
+  font-size: 2rem;
+  font-weight: 500;
+  color: #fcfcfc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.online span {
+  font-size: inherit;
+  font-weight: inherit;
+  color: #ffab2e;
+  margin-left: 0.7rem;
+  text-shadow: -0.1rem 0 black, 0 0.1rem black, 0.1rem 0 black, 0 -0.1rem black;
+}
+/*# sourceMappingURL=Online.css.map */

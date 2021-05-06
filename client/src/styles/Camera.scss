@@ -1,0 +1,57 @@
+.video {
+  height: 55%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+
+  &_name {
+    font-size: 2rem;
+
+    span {
+      font-size: inherit;
+
+      text-shadow: -0.07rem 0 black, 0 0.07rem black, 0.07rem 0 black,
+        0 -0.07rem black;
+
+      font-weight: 500;
+    }
+  }
+
+  &_online {
+    color: #39c671;
+  }
+
+  &_offline {
+    color: #ff3b3b;
+  }
+
+  &__button {
+    height: 6rem;
+    width: 20rem;
+    font-size: 2.5rem;
+    font-weight: 400;
+
+    background: linear-gradient(128.76deg, #8032e4 25.63%, #3d2eea 80.5%);
+
+    color: #fcfcfc;
+
+    border-radius: 3rem;
+
+    &:hover {
+      transform: scale(1.05);
+      cursor: pointer;
+    }
+  }
+}
+
+.non-displayed {
+  display: none;
+}
+
+.displayed {
+  height: 60%;
+  border-radius: 2rem;
+  border: 0.1rem solid blue;
+}

@@ -1,0 +1,38 @@
+.room-header {
+  height: 8rem;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+  &_id {
+    height: 100%;
+    border-radius: 1rem;
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+    &_blur {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.9);
+      filter: blur(0.1rem);
+      z-index: 1;
+
+      border-top-left-radius: 1em;
+      border-top-right-radius: 1em;
+    }
+
+    &_text {
+      display: inherit;
+      align-items: center;
+
+      font-size: 1.7rem;
+      line-height: 150%;
+
+      color: #2f3034;
+
+      z-index: 2;
+    }
+  }
+}

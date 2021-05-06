@@ -1,4 +1,122 @@
-.messages {
-  overflow: auto;
-  height: 100%;
+.history-wrapper {
+  height: calc(100% - 6rem);
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
+
+.history-wrapper::-webkit-scrollbar {
+  width: 0.7rem;
+  height: 2rem;
+}
+
+.history-wrapper::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 1rem;
+}
+
+.history-wrapper::-webkit-scrollbar-thumb:hover {
+  background: grey;
+}
+
+.message__wrapper {
+  width: 100%;
+  padding: 0.5rem 0rem;
+}
+
+.message_system {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  height: 2rem;
+  border-radius: 5rem;
+  background-color: Orange;
+  margin: 0rem auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.message_system_text {
+  font-size: 1.3rem;
+  color: ivory;
+  font-weight: 400;
+  margin: 0rem 0.7rem;
+}
+
+.message_my {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  text-align: right;
+}
+
+.message_others {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  text-align: left;
+}
+
+.message_my, .message_others {
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.message_my_color, .message_others_color {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  max-width: 60%;
+  margin: 0rem 0.75rem;
+  text-align: inherit;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.message_my_color {
+  background-color: #dbe5ff;
+  color: #4d7cfe;
+  border-bottom-right-radius: 0rem;
+}
+
+.message_others_color {
+  background-color: #4d7cfe;
+  color: #ffffff;
+  border-bottom-left-radius: 0rem;
+}
+
+.user-name {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.content {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.content_text {
+  text-align: start;
+  font-size: 1.8rem;
+}
+
+.content_time {
+  font-size: 1.2rem;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  margin-left: 0.5rem;
+}
+/*# sourceMappingURL=History.css.map */
